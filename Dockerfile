@@ -34,7 +34,9 @@ RUN apt-get update -y -qq >/dev/null \
     && mkdir /etc/nginx/ssl
 
 #Copia de los archivos de la página, el entrypoint, el fichero de configuración de apache y el fichero de configuración de modsecurity
-COPY public_html/ index.php  /var/www/html/
+COPY public_html  /var/www/html/public_html
+COPY private /var/www/html/private
+COPY index.php /var/www/html/index.php
 COPY --from=builder /downloads/nginx-1.14.2/objs/ngx_http_modsecurity_module.so /usr/share/nginx/modules/
 COPY --from=builder /downloads/owasp-modsecurity-crs /usr/local/owasp-modsecurity-crs
 COPY --from=builder /usr/local/modsecurity /usr/local/modsecurity
