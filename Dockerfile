@@ -45,6 +45,7 @@ COPY --from=builder /usr/lib/x86_64-linux-gnu/ /usr/lib/x86_64-linux-gnu/
 COPY --from=builder /downloads/ModSecurity/unicode.mapping /etc/nginx/modsec/
 COPY --from=builder /lib/x86_64-linux-gnu /lib/x86_64-linux-gnu
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY htpasswd /etc/nginx/ssl/.htpasswd
 COPY modsecurity.conf-recommened /etc/nginx/modsec/modsecurity.conf
 COPY main.conf /etc/nginx/modsec/main.conf
 COPY default /etc/nginx/sites-available/default
